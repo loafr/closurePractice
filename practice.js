@@ -45,7 +45,12 @@ calling("435-215-9248");
   Write a function called makeCounter that makes the following code work properly.
 */
 
-  //Code Here
+var makeCounter = function(){
+  var count = 0;
+  return function(){
+    return count++;
+  }
+}
   var count = makeCounter();
   count() // 1
   count() // 2
