@@ -66,10 +66,37 @@ var makeCounter = function(){
 /*
   Write a function that accepts another function as it's only argument and returns a new function
   (which invokes the original function that was passed in) that can only ever be executed once.
-  Once completed, add a second arguments that allows the function to be invoked N number of times.
+  Once completed, add a second argument that allows the function to be invoked N number of times.
   After the function has been called N number of times, console.log('STAHHP');
 */
 
+
+
+var mainFn = function(fn, num){
+  var called = false;
+  var count = 1;
+  return function(){
+    if(count < num && called === false){
+      fn();
+      //called = true <-- this messed it up, would only run once until "Stahhp"
+      count++;
+    } else {
+      return "Stahhp";
+    }
+    
+  }
+}
+
+var newFn = mainFn(function(){
+  alert("Here");
+}, 4);
+
+
+
+newFn();//Here
+newFn();//Here
+newFn();//Here
+newFn();//Stahhp
 
 
 
